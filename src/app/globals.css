@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #080808;
+  --bg-secondary: #101010;
+  --bg-surface: #151515;
+  --bg-surface-hover: #1b1b1b;
+  --text-primary: #f5f2ed;
+  --text-secondary: #a6a19a;
+  --text-muted: #6b665f;
+  --accent-gold: #c18b4a;
+  --accent-gold-bright: #d3a66b;
+  --accent-gold-glow: rgba(193, 139, 74, 0.2);
+  --border-subtle: rgba(245, 242, 237, 0.08);
+  --border-gold: rgba(193, 139, 74, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #080808;
+  color: #f5f2ed;
+  font-family: var(--font-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: #080808;
+  color: #f5f2ed;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #080808;
+}
+::-webkit-scrollbar-thumb {
+  background: #1c1c1c;
+  border-radius: 4px;
+  border: 1px solid rgba(193, 139, 74, 0.2);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c18b4a;
+}
+
+/* Selection */
+::selection {
+  background: rgba(193, 139, 74, 0.35);
+  color: #f5f2ed;
+}
+
+/* Cinematic Film Grain Overlay */
+.film-grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 99;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Ambient Ambient Gold Glows */
+.ambient-glow-top {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80vw;
+  max-width: 1000px;
+  height: 450px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(193, 139, 74, 0.12) 0%, rgba(8, 8, 8, 0) 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Luxury Border & Card Utility */
+.luxury-card {
+  background: #101010;
+  border: 1px solid rgba(245, 242, 237, 0.08);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7), 0 0 1px 1px rgba(245, 242, 237, 0.05);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.luxury-card:hover {
+  border-color: rgba(193, 139, 74, 0.35);
+  box-shadow: 0 14px 40px -10px rgba(0, 0, 0, 0.9), 0 0 25px -5px rgba(193, 139, 74, 0.15);
+}
+
+/* Gold Gradient Text */
+.gold-text-gradient {
+  background: linear-gradient(135deg, #f5f2ed 20%, #d3a66b 70%, #c18b4a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-accent-text {
+  background: linear-gradient(135deg, #d3a66b 0%, #c18b4a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Magnetic Button Glow */
+.gold-button {
+  background: linear-gradient(135deg, #c18b4a 0%, #8e6533 100%);
+  color: #080808;
+  font-weight: 600;
+  border: 1px solid rgba(211, 166, 107, 0.5);
+  box-shadow: 0 0 20px -3px rgba(193, 139, 74, 0.3);
+  transition: all 0.3s ease;
+}
+
+.gold-button:hover {
+  background: linear-gradient(135deg, #d3a66b 0%, #c18b4a 100%);
+  box-shadow: 0 0 35px 2px rgba(211, 166, 107, 0.45);
+  transform: translateY(-2px);
+}
+
+/* Secondary Ghost Button */
+.ghost-button {
+  background: rgba(21, 21, 21, 0.8);
+  color: #f5f2ed;
+  border: 1px solid rgba(245, 242, 237, 0.12);
+  transition: all 0.3s ease;
+}
+
+.ghost-button:hover {
+  background: rgba(30, 30, 30, 0.95);
+  border-color: rgba(193, 139, 74, 0.4);
+  color: #d3a66b;
+  transform: translateY(-2px);
+}
+
+/* Monogram Animated Reveal */
+@keyframes monogramSweep {
+  0% {
+    stroke-dashoffset: 280;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.monogram-path {
+  stroke-dasharray: 280;
+  animation: monogramSweep 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Section Tag / Badge */
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  background: rgba(193, 139, 74, 0.08);
+  border: 1px solid rgba(193, 139, 74, 0.25);
+  color: #d3a66b;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Hide cursor on touch devices */
+@media (pointer: coarse) {
+  .custom-cursor {
+    display: none !important;
+  }
+}
